@@ -73,7 +73,7 @@ class LinkedList:
         data = self._head.data
         self._head = self._head.next
         self._size -= 1
-        if self.is_empty():
+        if self.is_empty:
             self._tail = None
         return data
 
@@ -82,20 +82,22 @@ class LinkedList:
         if self.is_empty:
             raise IndexError("Nothing to remove. List is empty.")
         data = self._tail.data
-
-        if self.size == 1:
+        if self._head == self._tail:
             self._head = None
             self._tail = None
         else:
-            first = self._head
-            while True:
-                second = first.next
-                if second.next is None:
-                    self._tail = first
-                    self._tail.next = None
-                    break
-                first = second
+            current = self._head
+            while current.next != self._tail:
+                current = current.next
+            self._tail = current
+            self._tail.next = None
+            self._size -= 1
+            if self.is_empty:
+                self._head = None
         return data
+
+    def get_data_at_index(self, index):
+        """method to get data at index"""
 
     def __str__(self):
         """String method.  Display the contents of the linked lists"""
