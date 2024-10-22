@@ -73,12 +73,29 @@ class LinkedList:
         data = self._head.data
         self._head = self._head.next
         self._size -= 1
-        if self._size == 0:
+        if self.is_empty():
             self._tail = None
         return data
 
-    def remove_from_back(self, data):
+    def remove_from_back(self):
         """Remove an element from the back of the linked list"""
+        if self.is_empty:
+            raise IndexError("Nothing to remove. List is empty.")
+        data = self._tail.data
+
+        if self.size == 1:
+            self._head = None
+            self._tail = None
+        else:
+            first = self._head
+            while True:
+                second = first.next
+                if second.next is None:
+                    self._tail = first
+                    self._tail.next = None
+                    break
+                first = second
+        return data
 
     def __str__(self):
         """String method.  Display the contents of the linked lists"""
