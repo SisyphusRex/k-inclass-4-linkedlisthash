@@ -92,8 +92,6 @@ class LinkedList:
             self._tail = current
             self._tail.next = None
         self._size -= 1
-        if self._size == 1:
-            self._head = self._tail
         return data
 
     def get_data_at_index(self, index):
