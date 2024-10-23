@@ -4,6 +4,7 @@
 
 # First Party Imports
 from data_structures import LinkedList
+from employee import Employee
 
 # Third Party Imports
 
@@ -19,3 +20,12 @@ def main(*args):
     linked_list.add_to_back(6)
     linked_list.add_to_back(1)
     linked_list.add_to_front(9)
+    print(linked_list)
+    linked_list.remove_from_front()
+    linked_list.remove_from_back()
+    print(linked_list)
+
+    employee_list = LinkedList()
+    employee_list.add_to_front(Employee("David", "Barnes", 750.00))
+    employee_list.add_to_back(Employee("Jean", "Luc", 500.00))
+    print(employee_list)

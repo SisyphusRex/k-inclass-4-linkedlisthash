@@ -40,7 +40,7 @@ class LinkedList:
         # Make the next property of the node point ot the old head
         self._head.next = old_head
         # incremnt the size of the list
-        self.size += 1
+        self._size += 1
         # enshure that if we are adding the very first node to the linked list
         # that the tail will be pointing to the new node we create
         if self._size == 1:
@@ -101,4 +101,9 @@ class LinkedList:
 
     def __str__(self):
         """String method.  Display the contents of the linked lists"""
-        return super().__str__()
+        my_string = ""
+        current = self._head
+        while current is not None:
+            my_string = my_string + f"{current.data}\n"
+            current = current.next
+        return my_string
