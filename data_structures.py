@@ -96,6 +96,14 @@ class LinkedList:
 
     def get_data_at_index(self, index):
         """method to get data at index"""
+        if self.is_empty:
+            raise IndexError("Nothing in Linked List.")
+        counter: int = 0
+        current_node = self._head
+        while counter != index:
+            current_node = current_node.next
+            counter += 1
+        return current_node.data
 
     def __str__(self):
         """String method.  Display the contents of the linked lists"""

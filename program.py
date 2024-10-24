@@ -29,3 +29,6 @@ def main(*args):
     employee_list.add_to_front(Employee("David", "Barnes", 750.00))
     employee_list.add_to_back(Employee("Jean", "Luc", 500.00))
     print(employee_list)
+
+    found_employee = employee_list.get_data_at_index(1)
+    print(found_employee)
