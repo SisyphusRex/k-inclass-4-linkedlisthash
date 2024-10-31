@@ -113,3 +113,54 @@ class LinkedList:
             my_string = my_string + f"{current.data}\n"
             current = current.next
         return my_string
+
+
+class HashTable:
+    """Basic hash table data structure"""
+
+    PRIME_VALUE = 97
+
+    # TODO: Add buckets consisting of linked lists to self._values list and handle collisions
+    def __init__(self):
+        """constructor"""
+        self._values = [None for i in range(self.PRIME_VALUE)]
+        self._keys = [None for i in range(self.PRIME_VALUE)]
+
+    def put(self, key, value) -> None:
+        """Put something into hash table"""
+        index_for_value = self.__hash_function(key)
+        self._values[index_for_value] = value
+        self._keys[index_for_value] = key
+
+    def get(self, key) -> int:
+        """get something from the hash table"""
+        index_for_value = self.__hash_function(key)
+        return self._values[index_for_value]
+
+    def __hash_function(self, key) -> int:
+        """hash key to index"""
+        try:
+            hash_value = hash(key) % self.PRIME_VALUE
+        except TypeError:
+            hash_value = id(key) % self.PRIME_VALUE
+        return hash_value
+
+    def __str__(self):
+        """String method"""
+        return_string = "Key   => Value\n"
+        return_string += "--------------\n"
+        for i in range(self.PRIME_VALUE):
+            if self._values[i] is not None:
+                return_string += f"{self._keys[i]} => {self._values[i]}\n"
+        return return_string
+
+    def show_array(self):
+        """show underlying array"""
+        return_string = "Key => Value\n"
+        return_string += "------------\n"
+        for i in range(self.PRIME_VALUE):
+            value = ""
+            if self._values[i] is not None:
+                value = self._values[i]
+            return_string += f"[{i}] => {value}\n"
+        return return_string
